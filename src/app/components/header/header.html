@@ -5,7 +5,7 @@
       <span class="text-[0.7rem] font-medium whitespace-nowrap lg:text-xs">{{ site.info.name }}</span>
     </a>
 
-    <nav class="hidden items-center gap-5 min-[1360px]:flex" aria-label="التنقل الرئيسي">
+    <nav class="hidden flex-1 items-center justify-center gap-5 min-[1360px]:flex" aria-label="التنقل الرئيسي">
       @for (link of site.nav; track link.label) {
         @if (link.children) {
           <div class="group relative">
@@ -38,8 +38,6 @@
       }
     </nav>
 
-    <a href="#" lang="en" dir="ltr" class="hidden text-sm font-semibold hover:text-accent min-[1360px]:inline">English</a>
-
     <button
       type="button"
       class="-me-2 p-2 min-[1360px]:hidden"
@@ -61,7 +59,6 @@
             <a [routerLink]="child.route" (click)="closeMenu()" class="border-b border-line/50 py-3 ps-6 text-sm text-muted">{{ child.label }}</a>
           }
         }
-        <a href="#" lang="en" dir="ltr" class="py-3.5 text-start font-semibold">English</a>
       </div>
     </nav>
   }

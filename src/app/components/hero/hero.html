@@ -1,11 +1,49 @@
-<section id="top" aria-label="إعلان التسجيل في دورات الربع الثالث">
-  <h1 class="sr-only">عمادة تطوير المهارات – جامعة الملك سعود</h1>
-  <img
-    src="images/banner.jpeg"
-    alt="يسر عمادة تطوير المهارات الإعلان عن بدء التسجيل في دورات الربع الثالث من الخطة التدريبية 2026"
-    width="1280"
-    height="427"
-    fetchpriority="high"
-    class="block h-auto min-h-[200px] w-full object-cover object-[65%_center]"
-  />
+<section id="top" aria-label="إعلان التسجيل في دورات الربع الثالث" aria-roledescription="carousel"
+  class="group relative overflow-hidden bg-navy-950">
+  <!-- All slides are stacked in one grid cell and cross-fade via opacity -->
+  <div class="grid">
+    @for (slide of slides(); track $index) {
+      <div class="relative col-start-1 row-start-1 overflow-hidden transition-all duration-700 ease-in-out"
+        [class]="$index === slideIndex() ? 'z-10 scale-100 opacity-100' : 'pointer-events-none z-0 scale-105 opacity-0'"
+        [attr.aria-hidden]="$index === slideIndex() ? null : 'true'">
+        <!-- Blurred fill so non-banner ratios show the full image without empty bars -->
+        <img [src]="slide" alt="" aria-hidden="true"
+          class="absolute inset-0 size-full scale-110 object-cover blur-2xl brightness-90"/>
+        <img [src]="slide"
+          alt="يسر عمادة تطوير المهارات الإعلان عن بدء التسجيل في دورات الربع الثالث من الخطة التدريبية 2026"
+          width="1280" height="427" [attr.fetchpriority]="$index === 0 ? 'high' : null"
+          class="relative block aspect-[1280/427] min-h-[200px] w-full object-contain"/>
+      </div>
+    }
+  </div>
+
+  <!-- Prev / next arrows (start = right in RTL) -->
+  <div class="pointer-events-none absolute inset-x-0 top-1/2 z-20 flex -translate-y-1/2 items-center justify-between px-3 sm:px-5">
+    <button type="button" (click)="prev()" aria-label="الشريحة السابقة" [disabled]="isFirst()"
+      class="pointer-events-auto grid size-7 cursor-pointer place-items-center rounded-full bg-white/80 text-navy-900 shadow-md ring-1 ring-black/5 backdrop-blur-sm transition enabled:hover:scale-105 enabled:hover:bg-white enabled:active:scale-95 disabled:cursor-not-allowed disabled:bg-white/40 disabled:text-navy-900/30 disabled:shadow-none sm:size-8 md:opacity-0 md:group-hover:opacity-100 md:focus-visible:opacity-100">
+      <svg class="size-4 sm:size-5 rtl:-scale-x-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+    <button type="button" (click)="next()" aria-label="الشريحة التالية" [disabled]="isLast()"
+      class="pointer-events-auto grid size-7 cursor-pointer place-items-center rounded-full bg-white/80 text-navy-900 shadow-md ring-1 ring-black/5 backdrop-blur-sm transition enabled:hover:scale-105 enabled:hover:bg-white enabled:active:scale-95 disabled:cursor-not-allowed disabled:bg-white/40 disabled:text-navy-900/30 disabled:shadow-none sm:size-8 md:opacity-0 md:group-hover:opacity-100 md:focus-visible:opacity-100">
+      <svg class="size-4 sm:size-5 rtl:-scale-x-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Slide indicators -->
+  <div class="absolute inset-x-0 bottom-3 z-20 flex justify-center sm:bottom-5">
+    <div class="flex items-center gap-2 rounded-full bg-black/25 px-3 py-2 backdrop-blur-sm">
+      @for (slide of slides(); track $index) {
+        <button type="button" (click)="goTo($index)"
+          [attr.aria-label]="'الانتقال إلى الشريحة ' + ($index + 1)"
+          [attr.aria-current]="$index === slideIndex() ? 'true' : null"
+          class="h-2 cursor-pointer rounded-full transition-all duration-300"
+          [class]="$index === slideIndex() ? 'w-6 bg-gold' : 'w-2 bg-white/60 hover:bg-white'">
+        </button>
+      }
+    </div>
+  </div>
 </section>
