@@ -1,0 +1,43 @@
+@if (course(); as c) {
+  <app-page-header [title]="c.title" [trail]="trail" />
+
+  <section class="py-10">
+    <div class="container-page grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <img [src]="c.image" [alt]="c.category" width="960" height="640" class="aspect-[3/2] w-full rounded-lg object-cover shadow-card" />
+
+        <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+          <li class="flex items-start gap-3 rounded-md bg-tint p-4"><app-icon name="calendar" class="mt-0.5 text-accent" /><div><p class="text-xs text-muted">التاريخ</p><p class="font-semibold">{{ c.date | arabicDate }}</p></div></li>
+          <li class="flex items-start gap-3 rounded-md bg-tint p-4"><app-icon name="book" class="mt-0.5 text-accent" /><div><p class="text-xs text-muted">المجال</p><p class="font-semibold">{{ c.category }}</p></div></li>
+          <li class="flex items-start gap-3 rounded-md bg-tint p-4"><app-icon name="user" class="mt-0.5 text-accent" /><div><p class="text-xs text-muted">الفئة المستهدفة</p><p class="font-semibold">{{ c.audienceNote }}</p></div></li>
+          <li class="flex items-start gap-3 rounded-md bg-tint p-4"><app-icon name="map-pin" class="mt-0.5 text-accent" /><div><p class="text-xs text-muted">مكان الانعقاد</p><p class="font-semibold">{{ c.location }}</p></div></li>
+        </ul>
+      </div>
+
+      <aside id="register" class="h-fit rounded-lg bg-white p-7 shadow-card lg:col-span-5" aria-label="التسجيل في الدورة">
+        <h2 class="text-2xl font-bold">سجّل الآن</h2>
+        <p class="mt-2 mb-6 text-sm text-muted">أدخل بياناتك وسنؤكد تسجيلك في الدورة.</p>
+        <app-request-form [fields]="fields" submitLabel="تأكيد التسجيل" successMessage="تم استلام طلب التسجيل في الدورة، وسيصلك تأكيد قريباً." />
+      </aside>
+    </div>
+  </section>
+
+  @if (related().length) {
+    <section class="bg-tint py-10">
+      <div class="container-page">
+        <h2 class="text-2xl font-bold">دورات ذات صلة</h2>
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          @for (r of related(); track r.id) {
+            <app-course-card [course]="r" />
+          }
+        </div>
+      </div>
+    </section>
+  }
+} @else {
+  <app-page-header title="الدورة غير موجودة" [trail]="trail" />
+  <section class="py-20 text-center">
+    <p class="text-muted">لم نعثر على الدورة المطلوبة.</p>
+    <a routerLink="/courses" class="btn-primary mt-6">كل الدورات</a>
+  </section>
+}

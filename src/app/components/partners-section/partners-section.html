@@ -1,0 +1,28 @@
+<section id="partners" class="surface-dark py-12 md:py-14">
+  <div class="container-page">
+    <app-section-heading
+      align="center"
+      eyebrow="الشركاء الاستراتيجيون"
+      title="شراكات واعتمادات نفتخر بها"
+      description="نعمل مع جهات رائدة محلياً ودولياً لتقديم تدريب بمعايير عالمية."
+      [dark]="true"
+    />
+
+    <ul class="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
+      @for (p of partners; track p.name) {
+        <li class="h-28 rounded-md bg-white p-4 shadow-card">
+          <img [src]="p.image" [alt]="p.name" loading="lazy" class="h-full w-full object-contain" />
+        </li>
+      }
+    </ul>
+
+    <h3 class="mt-12 text-center text-xl font-bold text-white">الاعتمادات الدولية</h3>
+    <ul class="mt-8 grid gap-5 sm:grid-cols-3">
+      @for (a of accreditations; track a.name) {
+        <li class="h-32 rounded-md bg-white p-5 shadow-card">
+          <img [src]="a.image" [alt]="a.name" loading="lazy" class="h-full w-full object-contain" />
+        </li>
+      }
+    </ul>
+  </div>
+</section>

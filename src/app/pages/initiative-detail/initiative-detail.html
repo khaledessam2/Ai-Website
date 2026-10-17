@@ -1,0 +1,45 @@
+@if (item(); as i) {
+  <app-page-header [title]="i.title" />
+
+  <section class="py-10">
+    <div class="container-page grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-8">
+        <img [src]="i.image" [alt]="i.title" width="500" height="60" class="w-full rounded-md shadow-card" />
+
+        <h2 class="mt-10 text-xl font-bold">الهدف</h2>
+        <p class="mt-3 text-lg leading-9 text-muted">{{ i.goal }}</p>
+
+        <h2 class="mt-10 text-xl font-bold">وصف المبادرة</h2>
+        <p class="mt-3 text-lg leading-9 text-muted">{{ i.description }}</p>
+
+        @if (i.outputs.length) {
+          <h2 class="mt-10 text-xl font-bold">المخرجات</h2>
+          <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+            @for (o of i.outputs; track o) {
+              <li class="rounded-md bg-tint px-5 py-3 font-medium">{{ o }}</li>
+            }
+          </ul>
+        }
+      </div>
+
+      <aside class="lg:col-span-4">
+        <h2 class="text-lg font-bold">مبادرات أخرى</h2>
+        <ul class="mt-4 space-y-3">
+          @for (o of others(); track o.id) {
+            <li>
+              <a [routerLink]="['/initiatives', o.id]" class="flex items-center justify-between gap-3 rounded-md bg-white p-4 font-semibold shadow-card transition hover:text-accent">
+                {{ o.title }}
+                <app-icon name="arrow-left" [size]="16" />
+              </a>
+            </li>
+          }
+        </ul>
+      </aside>
+    </div>
+  </section>
+} @else {
+  <app-page-header title="المبادرة غير موجودة" />
+  <section class="py-20 text-center">
+    <a routerLink="/" class="btn-primary">الرئيسية</a>
+  </section>
+}

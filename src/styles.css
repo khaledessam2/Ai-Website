@@ -1,3 +1,121 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Outfit', 'Readex Pro', 'Segoe UI', Tahoma, sans-serif;
+
+  /* King Saud University palette, taken from dsd.ksu.edu.sa */
+  --color-navy-950: #082432;
+  --color-navy-900: #183765;
+  --color-navy-800: #1e447d;
+  --color-header: #0b6fa4;
+  --color-brand: #0b6fa4;
+  --color-accent: #0a75ad;
+  --color-accent-hover: #085f8e;
+  --color-accent-soft: #e8f4fb;
+  --color-tint: #eef4fc;
+  --color-ink: #12233f;
+  --color-muted: #55657a;
+  --color-line: #dfe7ef;
+  --color-teal: #00a58f;
+  --color-violet: #5f346f;
+  --color-gold: #e6b14b;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  --shadow-card: 0 18px 40px rgba(24, 55, 101, 0.1);
+  --shadow-hover: 0 26px 55px rgba(24, 55, 101, 0.2);
+  --shadow-glow: 0 10px 24px rgba(10, 117, 173, 0.35);
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: 84rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3.5 text-[0.95rem] font-semibold transition duration-200;
+}
+
+@utility btn-primary {
+  @apply btn bg-accent text-white shadow-glow hover:-translate-y-0.5 hover:bg-accent-hover;
+}
+
+@utility btn-outline {
+  @apply btn border border-white/60 text-white hover:bg-white/10;
+}
+
+@utility btn-dark {
+  @apply btn bg-navy-900 text-white hover:bg-navy-950;
+}
+
+/* Signature teal → blue → violet stripe used on the source site's banners */
+@utility brand-stripe {
+  background-image: linear-gradient(90deg, var(--color-teal), #0a5a86 55%, var(--color-violet));
+}
+
+@layer base {
+  html {
+    font-size: 112.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']),
+  [role='tab'],
+  summary {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /* Flat dark section surface */
+  .surface-dark {
+    background-color: #0b2e3f;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-sm font-semibold text-accent;
+  }
+  .surface-dark .eyebrow {
+    color: #4fd1bf;
+  }
+  .eyebrow::after {
+    content: '';
+    @apply block h-0.5 w-5 bg-current;
+  }
+}
+
+/* Accent buttons would vanish on the blue surface, so they invert there.
+   Kept outside @layer so it outranks the btn-primary utility. */
+.surface-dark .btn-primary {
+  background-color: #ffffff;
+  color: #12506f;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+.surface-dark .btn-primary:hover {
+  background-color: #e8f4fb;
+}

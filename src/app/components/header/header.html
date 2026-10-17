@@ -1,0 +1,68 @@
+<header class="sticky top-0 z-40 bg-white text-ink shadow-[0_2px_16px_rgba(24,55,101,0.1)]">
+  <div class="container-page flex h-20 items-center justify-between gap-6 lg:h-[100px]">
+    <a routerLink="/" class="flex shrink-0 flex-col items-center gap-1" aria-label="الرئيسية">
+      <img src="images/logo.png" alt="جامعة الملك سعود" width="120" height="44" class="h-9 w-auto rounded-sm lg:h-11" />
+      <span class="text-[0.7rem] font-medium whitespace-nowrap lg:text-xs">{{ site.info.name }}</span>
+    </a>
+
+    <nav class="hidden items-center gap-5 min-[1360px]:flex" aria-label="التنقل الرئيسي">
+      @for (link of site.nav; track link.label) {
+        @if (link.children) {
+          <div class="group relative">
+            <a
+              [routerLink]="link.route"
+              routerLinkActive="text-accent"
+              class="inline-flex items-center gap-1 py-3 text-[0.82rem] font-medium whitespace-nowrap text-ink/85 transition-colors hover:text-accent"
+            >
+              {{ link.label }}
+              <app-icon name="chevron-down" [size]="14" />
+            </a>
+            <ul class="invisible absolute start-0 top-full z-50 min-w-52 rounded-md border border-line bg-white py-2 opacity-0 shadow-card transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+              @for (child of link.children; track child.route) {
+                <li>
+                  <a [routerLink]="child.route" class="block px-5 py-2.5 text-sm hover:bg-tint hover:text-accent">{{ child.label }}</a>
+                </li>
+              }
+            </ul>
+          </div>
+        } @else {
+          <a
+            [routerLink]="link.route"
+            routerLinkActive="text-accent"
+            [routerLinkActiveOptions]="{ exact: link.route === '/' }"
+            class="py-3 text-[0.82rem] font-medium whitespace-nowrap text-ink/85 transition-colors hover:text-accent"
+          >
+            {{ link.label }}
+          </a>
+        }
+      }
+    </nav>
+
+    <a href="#" lang="en" dir="ltr" class="hidden text-sm font-semibold hover:text-accent min-[1360px]:inline">English</a>
+
+    <button
+      type="button"
+      class="-me-2 p-2 min-[1360px]:hidden"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="mobile-nav"
+      aria-label="القائمة"
+    >
+      <app-icon [name]="menuOpen() ? 'close' : 'menu'" [size]="26" />
+    </button>
+  </div>
+
+  @if (menuOpen()) {
+    <nav id="mobile-nav" class="max-h-[calc(100svh-5rem)] overflow-y-auto border-t border-line bg-white min-[1360px]:hidden" aria-label="التنقل الرئيسي">
+      <div class="container-page flex flex-col py-2">
+        @for (link of site.nav; track link.label) {
+          <a [routerLink]="link.route" (click)="closeMenu()" class="border-b border-line/70 py-3.5 font-medium">{{ link.label }}</a>
+          @for (child of link.children ?? []; track child.route) {
+            <a [routerLink]="child.route" (click)="closeMenu()" class="border-b border-line/50 py-3 ps-6 text-sm text-muted">{{ child.label }}</a>
+          }
+        }
+        <a href="#" lang="en" dir="ltr" class="py-3.5 text-start font-semibold">English</a>
+      </div>
+    </nav>
+  }
+</header>

@@ -1,0 +1,22 @@
+<app-page-header title="التقارير السنوية" [trail]="trail" />
+
+<section class="bg-tint py-10">
+  <div class="container-page grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    @for (r of reports(); track r.id) {
+      <article class="flex flex-col overflow-hidden rounded-md bg-white shadow-card">
+        @if (r.cover) {
+          <img [src]="r.cover" alt="" width="280" height="332" loading="lazy" class="aspect-[280/332] w-full object-cover" />
+        }
+        <div class="flex flex-1 flex-col p-5">
+          <h2 class="font-bold">{{ r.title }}</h2>
+          @if (r.pdf) {
+            <a [href]="r.pdf" target="_blank" class="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-semibold text-accent hover:text-accent-hover">
+              عرض التقرير
+              <app-icon name="arrow-left" [size]="16" />
+            </a>
+          }
+        </div>
+      </article>
+    }
+  </div>
+</section>

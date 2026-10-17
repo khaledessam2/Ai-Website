@@ -1,0 +1,16 @@
+<app-page-header title="مكتبة المرئيات والصور" subtitle="ألبوم العمادة" [trail]="trail" />
+
+<section class="bg-tint py-10">
+  <div class="container-page grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    @for (a of albums(); track a.title) {
+      <article class="flex items-start gap-4 rounded-md bg-white p-6 shadow-card">
+        <span class="grid h-12 w-12 shrink-0 place-items-center rounded-md bg-accent-soft text-accent"><app-icon name="calendar" [size]="22" /></span>
+        <div>
+          <h2 class="font-bold">{{ a.title }}</h2>
+          <p class="mt-2 text-sm text-muted">{{ a.date | arabicDate }}</p>
+          <p class="mt-1 text-sm text-muted">{{ a.photos }} صور</p>
+        </div>
+      </article>
+    }
+  </div>
+</section>

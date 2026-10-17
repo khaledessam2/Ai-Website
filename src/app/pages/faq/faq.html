@@ -1,0 +1,12 @@
+<app-page-header title="الأسئلة الشائعة" />
+
+<section class="bg-tint py-10">
+  <div class="container-page max-w-3xl space-y-12">
+    @for (g of groups(); track g.title) {
+      <div>
+        <h2 class="mb-5 text-xl font-bold">{{ g.title }}</h2>
+        <app-accordion [items]="g.items" />
+      </div>
+    }
+  </div>
+</section>

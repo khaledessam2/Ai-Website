@@ -1,0 +1,25 @@
+<app-page-header title="انضم لشركائنا" />
+
+<section class="py-10">
+  <div class="container-page grid gap-10 lg:grid-cols-12">
+    <div class="lg:col-span-5">
+      <p class="leading-8 text-muted">
+        انطلاقاً من دور عمادة تطوير المهارات في تعزيز الشراكات الاستراتيجية وبناء منظومة تدريبية مستدامة تسهم في تنمية القدرات الوطنية وتحقيق مستهدفات رؤية المملكة 2030، نرحب بالجهات والمؤسسات الراغبة في التعاون والشراكة معنا لتقديم برامج ومبادرات تدريبية نوعية.
+      </p>
+      <h2 class="mt-8 text-lg font-bold">للانضمام كشريك، يرجى تعبئة الطلب متضمناً:</h2>
+      <ul class="mt-4 list-disc space-y-2 ps-6 text-muted">
+        @for (r of requirements; track r) {
+          <li>{{ r }}</li>
+        }
+      </ul>
+      <p class="mt-6 leading-8 text-muted">وسيتم التواصل مع الجهات التي تتوافق مقترحاتها مع توجهات العمادة وأولوياتها الاستراتيجية.</p>
+    </div>
+
+    <div class="rounded-lg bg-white p-7 shadow-card md:p-9 lg:col-span-7">
+      <h2 class="mb-6 text-2xl font-bold">طلب شراكة</h2>
+      <app-request-form [fields]="fields" successMessage="تم استلام طلب الشراكة، وسنتواصل معكم عند توافقه مع أولويات العمادة." />
+    </div>
+  </div>
+</section>
+
+<app-partners-section />

@@ -1,0 +1,26 @@
+@if (item(); as n) {
+  <app-page-header [title]="n.title" [trail]="trail" />
+
+  <article class="py-10">
+    <div class="container-page max-w-3xl">
+      <img [src]="n.image" alt="" width="760" height="400" class="aspect-[19/10] w-full rounded-lg object-cover shadow-card" />
+      <time class="mt-6 block text-sm text-muted" [attr.datetime]="n.date">{{ n.date | arabicDate }}</time>
+      <div class="mt-6 space-y-5 text-lg leading-9">
+        @for (p of paragraphs(); track $index) {
+          <p>{{ p }}</p>
+        } @empty {
+          <p>{{ n.excerpt }}</p>
+        }
+      </div>
+      <a routerLink="/news" class="btn-primary mt-12">
+        <app-icon name="arrow-right" [size]="16" />
+        جميع الأخبار
+      </a>
+    </div>
+  </article>
+} @else {
+  <app-page-header title="الخبر غير موجود" [trail]="trail" />
+  <section class="py-20 text-center">
+    <a routerLink="/news" class="btn-primary">جميع الأخبار</a>
+  </section>
+}

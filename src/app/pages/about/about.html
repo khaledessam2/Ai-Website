@@ -1,0 +1,40 @@
+<app-page-header title="نبذة عن العمادة" />
+
+<section class="py-10 md:py-12">
+  <div class="container-page">
+    <ul class="grid gap-6 md:grid-cols-2">
+      @for (p of pillars; track p.title) {
+        <li class="rounded-md border-e-4 border-brand bg-white p-7 shadow-card">
+          <div class="flex items-center gap-4">
+            <span class="grid h-12 w-12 place-items-center rounded-md bg-accent-soft text-accent"><app-icon [name]="p.icon" [size]="24" /></span>
+            <h2 class="text-xl font-bold">{{ p.title }}</h2>
+          </div>
+          <p class="mt-4 leading-8 text-muted">{{ p.text }}</p>
+        </li>
+      }
+    </ul>
+
+    <h2 class="mt-16 text-2xl font-bold">أهداف العمادة</h2>
+    <ul class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      @for (o of objectives; track o.title; let i = $index) {
+        <li class="rounded-md bg-tint p-6">
+          <span class="text-sm font-semibold text-accent tabular-nums" dir="ltr">{{ (i + 1).toString().padStart(2, '0') }}</span>
+          <h3 class="mt-2 font-bold">{{ o.title }}</h3>
+          <p class="mt-2 text-sm leading-7 text-muted">{{ o.text }}</p>
+        </li>
+      }
+    </ul>
+
+    <h2 class="mt-16 text-2xl font-bold">سياسة الجودة</h2>
+    <div class="mt-6 space-y-4 leading-8 text-muted">
+      @for (para of policy; track $index) {
+        <p>{{ para }}</p>
+      }
+    </div>
+
+    <a routerLink="/about/structure" class="btn-primary mt-12">
+      الهيكل التنظيمي
+      <app-icon name="arrow-left" [size]="16" />
+    </a>
+  </div>
+</section>

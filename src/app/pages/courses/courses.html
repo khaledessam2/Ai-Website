@@ -1,0 +1,53 @@
+<app-page-header title="الدورات التدريبية" subtitle="دورات وورش تدريبية لأعضاء هيئة التدريس والطلاب والقيادات والموظفين." />
+
+<section class="bg-tint py-8 md:py-10">
+  <div class="container-page">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div class="flex flex-wrap gap-3" role="tablist" aria-label="الفئة المستهدفة">
+        @for (f of filters; track f.key) {
+          <button
+            type="button"
+            role="tab"
+            class="rounded-sm border px-5 py-2.5 text-sm font-semibold transition"
+            [class]="selected() === f.key ? 'border-accent bg-accent text-white shadow-glow' : 'border-line bg-white hover:border-accent'"
+            [attr.aria-selected]="selected() === f.key"
+            (click)="select(f.key)"
+          >
+            {{ f.label }}
+          </button>
+        }
+      </div>
+      <p class="text-sm text-muted">{{ total() }} دورة</p>
+    </div>
+
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      @for (course of pager.visible(); track course.id) {
+        <app-course-card [course]="course" />
+      } @empty {
+        <p class="col-span-full py-16 text-center text-muted">لا توجد دورات متاحة لهذه الفئة حالياً.</p>
+      }
+    </div>
+
+    @if (pager.pageCount() > 1) {
+      <nav class="mt-10 flex flex-wrap items-center justify-center gap-2" aria-label="ترقيم الصفحات">
+        <button type="button" class="grid h-10 w-10 place-items-center rounded-sm bg-white shadow-card disabled:opacity-40" [disabled]="!pager.canPrev()" (click)="pager.prev()" aria-label="السابق">
+          <app-icon name="arrow-right" />
+        </button>
+        @for (p of pages(); track p) {
+          <button
+            type="button"
+            class="grid h-10 w-10 place-items-center rounded-sm text-sm font-semibold"
+            [class]="pager.current() === p ? 'bg-accent text-white' : 'bg-white shadow-card hover:text-accent'"
+            [attr.aria-current]="pager.current() === p ? 'page' : null"
+            (click)="pager.goTo(p)"
+          >
+            {{ p + 1 }}
+          </button>
+        }
+        <button type="button" class="grid h-10 w-10 place-items-center rounded-sm bg-white shadow-card disabled:opacity-40" [disabled]="!pager.canNext()" (click)="pager.next()" aria-label="التالي">
+          <app-icon name="arrow-left" />
+        </button>
+      </nav>
+    }
+  </div>
+</section>
