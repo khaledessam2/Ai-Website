@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { Icon } from '../../shared/icon/icon';
 
 @Component({
   selector: 'app-hero',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [Icon],
   templateUrl: './hero.html',
 })
 export class Hero {

@@ -8,12 +8,13 @@ import {
   signal,
 } from '@angular/core';
 import { SiteService } from '../../services/site.service';
+import { Icon } from '../../shared/icon/icon';
 
 const DURATION_MS = 2000;
 
 @Component({
   selector: 'app-stats-strip',
-  imports: [DecimalPipe],
+  imports: [DecimalPipe, Icon],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './stats-strip.html',
 })

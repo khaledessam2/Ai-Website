@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { FooterGroup, Logo, NavLink, Objective, Pillar, SiteInfo, Stat } from '../models';
-
-/** Content mirrors https://dsd.ksu.edu.sa/ar */
 @Injectable({ providedIn: 'root' })
 export class SiteService {
   readonly info: SiteInfo = {
@@ -82,10 +80,10 @@ export class SiteService {
   ];
 
   readonly stats: Stat[] = [
-    { value: 6089, label: 'عدد الدورات والورش التدريبية', icon: 'images/stats/stat-1.svg' },
-    { value: 3818, label: 'عدد الأيام التدريبية', icon: 'images/stats/stat-2.webp' },
-    { value: 16293, label: 'عدد الساعات التدريبية', icon: 'images/stats/stat-3.svg' },
-    { value: 83356, label: 'عدد المستفيدين من الدورات والورش التدريبية', icon: 'images/stats/stat-4.svg' },
+    { value: 6089, label: 'عدد الدورات والورش التدريبية', icon: 'book' },
+    { value: 3818, label: 'عدد الأيام التدريبية', icon: 'calendar' },
+    { value: 16293, label: 'عدد الساعات التدريبية', icon: 'clock' },
+    { value: 83356, label: 'عدد المستفيدين من الدورات والورش التدريبية', icon: 'groups' },
   ];
 
   readonly partners: Logo[] = [

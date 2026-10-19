@@ -5,10 +5,13 @@ export type IconName =
   | 'book'
   | 'calendar'
   | 'chevron-down'
+  | 'chevron-left'
+  | 'chevron-right'
   | 'clock'
   | 'close'
   | 'download'
   | 'eye'
+  | 'groups'
   | 'headset'
   | 'mail'
   | 'map-pin'
@@ -63,7 +66,7 @@ export interface Objective {
 export interface Stat {
   value: number;
   label: string;
-  icon: string;
+  icon: IconName;
 }
 
 export interface Logo {

@@ -38,16 +38,26 @@
       }
     </nav>
 
-    <button
-      type="button"
-      class="-me-2 p-2 min-[1360px]:hidden"
-      (click)="toggleMenu()"
-      [attr.aria-expanded]="menuOpen()"
-      aria-controls="mobile-nav"
-      aria-label="القائمة"
-    >
-      <app-icon [name]="menuOpen() ? 'close' : 'menu'" [size]="26" />
-    </button>
+    <div class="flex shrink-0 items-center gap-2">
+      <a
+        [href]="loginUrl"
+        target="_self"
+        rel="noopener noreferrer"
+        class="inline-flex items-center rounded-md bg-accent px-5 py-2 text-sm font-medium whitespace-nowrap text-white transition-opacity hover:opacity-90"
+      >
+        تسجيل الدخول
+      </a>
+      <button
+        type="button"
+        class="-me-2 p-2 min-[1360px]:hidden"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-controls="mobile-nav"
+        aria-label="القائمة"
+      >
+        <app-icon [name]="menuOpen() ? 'close' : 'menu'" [size]="26" />
+      </button>
+    </div>
   </div>
 
   @if (menuOpen()) {

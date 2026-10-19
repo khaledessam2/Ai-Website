@@ -5,4 +5,6 @@ export interface NewsItem {
   /** ISO date (yyyy-mm-dd) */
   date: string;
   image: string;
+  /** Article paragraphs */
+  body: string[];
 }

@@ -16,6 +16,6 @@ export class NewsDetail {
   readonly id = input.required<string>();
 
   protected readonly item = computed(() => this.news.byId(this.id()));
-  protected readonly paragraphs = computed(() => this.news.bodies()[this.id()] ?? []);
+  protected readonly paragraphs = computed(() => this.item()?.body ?? []);
   protected readonly trail = [{ label: 'الأخبار', route: '/news' }];
 }
