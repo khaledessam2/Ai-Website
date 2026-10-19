@@ -1,10 +1,8 @@
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 import { FaqItem } from '../../models';
-import { Icon } from '../icon/icon';
 
 @Component({
   selector: 'app-accordion',
-  imports: [Icon],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ul class="space-y-3">
@@ -18,7 +16,7 @@ import { Icon } from '../icon/icon';
               (click)="toggle(i)"
             >
               <span>{{ item.q }}</span>
-              <app-icon [name]="open() === i ? 'minus' : 'plus'" class="text-accent" />
+              <span class="material-symbols-outlined text-accent" aria-hidden="true" style="font-size: 18px">{{ open() === i ? 'remove' : 'add' }}</span>
             </button>
           </h3>
           @if (open() === i) {

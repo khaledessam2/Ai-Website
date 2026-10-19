@@ -9,10 +9,10 @@ export class SiteService {
     credit: 'تم تطويره وصيانته بواسطة عمادة التعاملات الإلكترونية والاتصالات - جامعة الملك سعود',
     lastUpdated: '2026/10/13',
     contact: [
-      { icon: 'monitor', label: 'المنصة', value: 'جامعة المللك سعود' },
-      { icon: 'clock', label: 'أوقات العمل', value: 'الأحد - الخميس (8 ص - 2 م)' },
-      { icon: 'phone', label: 'رقم الاتصال الموحد من خارج الجامعة', value: '0118062223', ltr: true },
-      { icon: 'headset', label: 'رقم التواصل الموحد من داخل الجامعة', value: '62223', ltr: true },
+      { icon: 'desktop_windows', label: 'المنصة', value: 'جامعة المللك سعود' },
+      { icon: 'schedule', label: 'أوقات العمل', value: 'الأحد - الخميس (8 ص - 2 م)' },
+      { icon: 'call', label: 'رقم الاتصال الموحد من خارج الجامعة', value: '0118062223', ltr: true },
+      { icon: 'headset_mic', label: 'رقم التواصل الموحد من داخل الجامعة', value: '62223', ltr: true },
     ],
   };
 
@@ -46,7 +46,7 @@ export class SiteService {
 
   readonly aboutPillars: Pillar[] = [
     {
-      icon: 'eye',
+      icon: 'visibility',
       title: 'الرؤية',
       text: 'أن تكون العمادة صرحاً رائداً ومتميزاً لتطوير المهارات للمستفيدين لبناء اقتصاد المعرفة.',
     },
@@ -56,7 +56,7 @@ export class SiteService {
       text: 'تقديم برامج ودورات تدريبية متميزة ودراسات تطويرية تسهم في بناء مجتمع المعرفة من خلال بيئة عمل محفزة وداعمة للإبداع والابتكار والتوظيف الأمثل للتقنية والشراكة المحلية والعالمية الفاعلة.',
     },
     {
-      icon: 'shield',
+      icon: 'verified_user',
       title: 'سياسة الجودة',
       text: 'تقديم الخدمات التدريبية وتطوير مهارات منسوبي الجامعة وفق المعايير الوطنية والدولية، وتطبيق نظام إدارة الجودة وفقاً للمواصفة الدولية (ISO 9001:2015).',
     },
@@ -80,9 +80,9 @@ export class SiteService {
   ];
 
   readonly stats: Stat[] = [
-    { value: 6089, label: 'عدد الدورات والورش التدريبية', icon: 'book' },
-    { value: 3818, label: 'عدد الأيام التدريبية', icon: 'calendar' },
-    { value: 16293, label: 'عدد الساعات التدريبية', icon: 'clock' },
+    { value: 6089, label: 'عدد الدورات والورش التدريبية', icon: 'menu_book' },
+    { value: 3818, label: 'عدد الأيام التدريبية', icon: 'calendar_month' },
+    { value: 16293, label: 'عدد الساعات التدريبية', icon: 'schedule' },
     { value: 83356, label: 'عدد المستفيدين من الدورات والورش التدريبية', icon: 'groups' },
   ];
 

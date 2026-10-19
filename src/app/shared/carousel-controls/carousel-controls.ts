@@ -1,17 +1,15 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-import { Icon } from '../icon/icon';
 
 @Component({
   selector: 'app-carousel-controls',
-  imports: [Icon],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="flex gap-3">
       <button type="button" class="ctrl" [disabled]="!canPrev()" (click)="prev.emit()" aria-label="السابق">
-        <app-icon name="arrow-right" />
+        <span class="material-symbols-outlined" aria-hidden="true" style="font-size: 18px">arrow_forward</span>
       </button>
       <button type="button" class="ctrl" [disabled]="!canNext()" (click)="next.emit()" aria-label="التالي">
-        <app-icon name="arrow-left" />
+        <span class="material-symbols-outlined" aria-hidden="true" style="font-size: 18px">arrow_back</span>
       </button>
     </div>
   `,

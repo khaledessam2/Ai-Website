@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NewsService } from '../../services/news.service';
-import { ArabicDatePipe, Icon, PageHeader } from '../../shared';
+import { ArabicDatePipe, PageHeader } from '../../shared';
 
 @Component({
   selector: 'app-news-detail',
-  imports: [ArabicDatePipe, Icon, PageHeader, RouterLink],
+  imports: [ArabicDatePipe, PageHeader, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './news-detail.html',
 })

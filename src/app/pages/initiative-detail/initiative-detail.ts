@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { InitiativesService } from '../../services/initiatives.service';
-import { Icon, PageHeader } from '../../shared';
+import { PageHeader } from '../../shared';
 
 @Component({
   selector: 'app-initiative-detail',
-  imports: [Icon, PageHeader, RouterLink],
+  imports: [PageHeader, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './initiative-detail.html',
 })

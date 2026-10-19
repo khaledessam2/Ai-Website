@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SiteService } from '../../services/site.service';
-import { Icon } from '../../shared';
 
 @Component({
   selector: 'app-footer',
-  imports: [Icon, RouterLink],
+  imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer.html',
 })

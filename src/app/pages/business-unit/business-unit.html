@@ -1,34 +1,26 @@
-<app-page-header title="وحدة الأعمال" subtitle="برامج تدريبية مخصصة للجهات والمؤسسات وفق احتياجاتها." />
-
-<section class="py-10">
-  <div class="container-page grid gap-10 lg:grid-cols-12">
-    <div class="rounded-lg bg-white p-7 shadow-card md:p-9 lg:col-span-7">
-      <h2 class="text-2xl font-bold">اطلب برنامجاً تدريبياً</h2>
-      <p class="mt-2 mb-6 text-muted">أرسل لنا متطلباتكم وسنعدّ لكم عرضاً مفصلاً.</p>
-      <app-request-form [fields]="fields" successMessage="تم استلام طلبكم، وسيتواصل معكم فريق وحدة الأعمال قريباً." />
+<section class="bg-tint py-16">
+  <div class="container-page">
+    <div class="mx-auto max-w-5xl overflow-hidden rounded-lg bg-white shadow-card">
+      <h2 class="bg-accent px-6 py-6 text-center text-xl font-bold text-white">معلومات التواصل</h2>
+      <div class="px-10 pt-8 pb-4">
+        <h3 class="border-b border-accent pb-4 text-lg font-bold text-accent">وحدة الأعمال</h3>
+        <ul>
+          <li class="grid grid-cols-2 items-center gap-4 border-b border-line py-5">
+            <span class="flex items-center gap-3 font-semibold">
+              <span class="material-symbols-outlined text-accent" aria-hidden="true" style="font-size: 20px">call</span>
+              هاتف:
+            </span>
+            <span dir="ltr" class="text-start">0118053108</span>
+          </li>
+          <li class="grid grid-cols-2 items-center gap-4 border-b border-line py-5">
+            <span class="flex items-center gap-3 font-semibold">
+              <span class="material-symbols-outlined text-accent" aria-hidden="true" style="font-size: 20px">mail</span>
+              بريد إلكتروني:
+            </span>
+            <a href="mailto:dsdjet@ksu.edu.sa" dir="ltr" class="text-start text-accent">dsdjet&#64;ksu.edu.sa</a>
+          </li>
+        </ul>
+      </div>
     </div>
-
-    <aside class="surface-dark h-fit rounded-lg p-8 text-white shadow-card lg:col-span-5">
-      <h2 class="text-xl font-bold">معلومات التواصل</h2>
-      <ul class="mt-6 space-y-4">
-        <li class="flex items-center gap-4 rounded-md border border-white/10 bg-white/[0.04] p-4">
-          <span class="grid h-11 w-11 place-items-center rounded-sm bg-white/10"><app-icon name="phone" [size]="20" /></span>
-          <div><p class="text-sm text-white/70">هاتف</p><p class="font-semibold" dir="ltr">0118053108</p></div>
-        </li>
-        <li class="flex items-center gap-4 rounded-md border border-white/10 bg-white/[0.04] p-4">
-          <span class="grid h-11 w-11 place-items-center rounded-sm bg-white/10"><app-icon name="mail" [size]="20" /></span>
-          <div><p class="text-sm text-white/70">بريد إلكتروني</p><a href="mailto:dsdjet@ksu.edu.sa" class="font-semibold" dir="ltr">dsdjet&#64;ksu.edu.sa</a></div>
-        </li>
-      </ul>
-    </aside>
   </div>
 </section>
-
-@if (faq(); as group) {
-  <section class="bg-tint py-10">
-    <div class="container-page max-w-3xl">
-      <h2 class="mb-8 text-2xl font-bold">الأسئلة الشائعة</h2>
-      <app-accordion [items]="group.items" />
-    </div>
-  </section>
-}

@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MediaService } from '../../services/media.service';
-import { Icon, PageHeader } from '../../shared';
+import { PageHeader } from '../../shared';
 
 @Component({
   selector: 'app-annual-reports',
-  imports: [Icon, PageHeader],
+  imports: [PageHeader],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './annual-reports.html',
 })

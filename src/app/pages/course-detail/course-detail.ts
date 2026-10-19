@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { FormField } from '../../models';
-import { CourseCard } from '../../components/course-card/course-card';
+import { COURSE_LEVEL_LABELS, coursePricing } from '../../models';
 import { CoursesService } from '../../services/courses.service';
-import { ArabicDatePipe, Icon, PageHeader, RequestForm } from '../../shared';
+import { ArabicDatePipe, PageHeader } from '../../shared';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-course-detail',
-  imports: [ArabicDatePipe, CourseCard, Icon, PageHeader, RequestForm, RouterLink],
+  imports: [ArabicDatePipe, PageHeader, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './course-detail.html',
 })
@@ -17,22 +17,22 @@ export class CourseDetail {
   /** Route param */
   readonly id = input.required<string>();
 
+  protected readonly loading = this.courses.loading;
   protected readonly course = computed(() => this.courses.byId(this.id()));
-  protected readonly related = computed(() => {
-    const current = this.course();
-    return current
-      ? this.courses
-          .courses()
-          .filter((c) => c.category === current.category && c.id !== current.id)
-          .slice(0, 4)
-      : [];
+  protected readonly pricing = computed(() => {
+    const c = this.course();
+    return c ? coursePricing(c) : null;
   });
+  protected readonly stars = [1, 2, 3, 4, 5];
+  protected readonly rating = computed(() => this.course()?.avgRate ?? 0);
+  protected readonly offerEndDate = computed(() => this.pricing()?.offerEnds?.slice(0, 10) ?? null);
+  protected readonly levelLabel = computed(() => {
+    const c = this.course();
+    return c ? COURSE_LEVEL_LABELS[c.courseLevel] : '';
+  });
+  protected readonly image = computed(() => this.course()?.imageUrl || 'images/course-placeholder.svg');
 
   protected readonly trail = [{ label: 'الدورات التدريبية', route: '/courses' }];
-  protected readonly fields: FormField[] = [
-    { name: 'name', label: 'الاسم', required: true, placeholder: 'أدخل اسمك' },
-    { name: 'email', label: 'البريد الإلكتروني', type: 'email', required: true, placeholder: 'name@ksu.edu.sa' },
-    { name: 'phone', label: 'الهاتف المحمول', type: 'tel', required: true, placeholder: '05XXXXXXXX' },
-    { name: 'organization', label: 'الجهة / الكلية', placeholder: 'أدخل جهتك أو كليتك' },
-  ];
+  /** Registration happens on the learning portal. */
+  protected readonly registerUrl = environment.portalURl;
 }

@@ -21,7 +21,7 @@
       </ul>
     } @else {
       <button type="button" class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-hover" (click)="pick(null)">
-        <app-icon name="arrow-right" [size]="16" />
+        <span class="material-symbols-outlined" aria-hidden="true" style="font-size: 16px">arrow_forward</span>
         العودة للأشهر
       </button>
       <h2 class="mt-4 text-2xl font-bold">بيانات شهر {{ monthName() }}</h2>
@@ -57,9 +57,9 @@
               <p class="text-xs font-semibold text-accent">{{ e.category }} · {{ e.track }}</p>
               <h3 class="mt-1 text-lg font-bold">{{ e.title }}</h3>
               <p class="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted">
-                <span class="inline-flex items-center gap-1.5"><app-icon name="calendar" [size]="15" />{{ e.day }} · {{ e.date | arabicDate }}</span>
-                <span class="inline-flex items-center gap-1.5"><app-icon name="clock" [size]="15" />{{ e.days }} يوم · {{ e.hours }} ساعات</span>
-                <span class="inline-flex items-center gap-1.5"><app-icon name="user" [size]="15" />{{ e.audience }}</span>
+                <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined" aria-hidden="true" style="font-size: 15px">calendar_month</span>{{ e.day }} · {{ e.date | arabicDate }}</span>
+                <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined" aria-hidden="true" style="font-size: 15px">schedule</span>{{ e.days }} يوم · {{ e.hours }} ساعات</span>
+                <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined" aria-hidden="true" style="font-size: 15px">person</span>{{ e.audience }}</span>
               </p>
             </div>
           </li>
@@ -71,7 +71,7 @@
       @if (pager.pageCount() > 1) {
         <nav class="mt-10 flex flex-wrap items-center justify-center gap-2" aria-label="ترقيم الصفحات">
           <button type="button" class="grid h-10 w-10 place-items-center rounded-sm bg-white shadow-card disabled:opacity-40" [disabled]="!pager.canPrev()" (click)="pager.prev()" aria-label="السابق">
-            <app-icon name="arrow-right" />
+            <span class="material-symbols-outlined" aria-hidden="true" style="font-size: 18px">arrow_forward</span>
           </button>
           @for (p of pages(); track p) {
             <button
@@ -85,7 +85,7 @@
             </button>
           }
           <button type="button" class="grid h-10 w-10 place-items-center rounded-sm bg-white shadow-card disabled:opacity-40" [disabled]="!pager.canNext()" (click)="pager.next()" aria-label="التالي">
-            <app-icon name="arrow-left" />
+            <span class="material-symbols-outlined" aria-hidden="true" style="font-size: 18px">arrow_back</span>
           </button>
         </nav>
       }

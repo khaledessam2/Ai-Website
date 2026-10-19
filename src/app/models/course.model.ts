@@ -1,20 +1,63 @@
 export type Audience = 'faculty' | 'students' | 'leaders' | 'staff';
 export type AudienceFilter = Audience | 'all';
-export type DeliveryMode = 'remote' | 'in-person';
 
+export type CourseLevel = 'Beginner' | 'Intermediate' | 'Advanced';
+
+/** A course as returned by `POST /course/GetAllForWebSiteBuilder`. */
 export interface Course {
-  /** Node id on the source site; used as the route id */
   id: string;
-  title: string;
-  category: string;
-  audience: Audience;
-  /** Audience exactly as written on the source site */
-  audienceNote: string;
-  mode: DeliveryMode;
-  location: string;
-  /** ISO date (yyyy-mm-dd) */
-  date: string;
-  image: string;
+  name: string;
+  subCategoryId: string;
+  subCategoryName: string;
+  mainPrice: number | null;
+  specialPrice: number | null;
+  specialValidTill: string | null;
+  isFree: boolean;
+  reviewsCount: number;
+  totalStudent: number;
+  lessonCount: number;
+  courseLevel: CourseLevel;
+  imageUrl: string | null;
+  avgRate: number | null;
+  /** HTML authored in the LMS rich-text editor */
+  longDescription: string | null;
+  hasOffer: boolean;
+  offerPrice: number | null;
+  /** ISO date-time the offer ends */
+  validTo: string | null;
+}
+
+export interface PagedResponse<T> {
+  result: { currentPage: number; totalPages: number; pageSize: number; totalCount: number; items: T[] };
+  isSuccess: boolean;
+  message: string;
+}
+
+export const COURSE_LEVEL_LABELS: Record<CourseLevel, string> = {
+  Beginner: 'مبتدأ',
+  Intermediate: 'متوسط',
+  Advanced: 'متقدم',
+};
+
+export interface CoursePricing {
+  /** null when the course is free */
+  current: number | null;
+  /** Struck-through price when a discount applies */
+  original: number | null;
+  /** ISO date-time the discount ends */
+  offerEnds: string | null;
+}
+
+export function coursePricing(c: Course, now = new Date()): CoursePricing {
+  if (c.isFree) return { current: null, original: null, offerEnds: null };
+  const main = c.mainPrice ?? 0;
+  if (c.hasOffer && c.offerPrice !== null && (!c.validTo || new Date(c.validTo) > now)) {
+    return { current: c.offerPrice, original: main, offerEnds: c.validTo };
+  }
+  if (c.specialPrice !== null && (!c.specialValidTill || new Date(c.specialValidTill) > now)) {
+    return { current: c.specialPrice, original: main, offerEnds: c.specialValidTill };
+  }
+  return { current: main, original: null, offerEnds: null };
 }
 
 export const AUDIENCE_LABELS: Record<AudienceFilter, string> = {

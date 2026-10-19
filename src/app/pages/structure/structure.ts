@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Icon, PageHeader } from '../../shared';
+import { PageHeader } from '../../shared';
 
 @Component({
   selector: 'app-structure',
-  imports: [Icon, PageHeader],
+  imports: [PageHeader],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './structure.html',
 })

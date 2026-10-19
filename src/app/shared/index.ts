@@ -1,4 +1,3 @@
-export * from './icon/icon';
 export * from './page-header/page-header';
 export * from './request-form/request-form';
 export * from './section-heading/section-heading';

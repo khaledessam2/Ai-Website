@@ -15,7 +15,7 @@
               class="inline-flex items-center gap-1 py-3 text-[0.82rem] font-medium whitespace-nowrap text-ink/85 transition-colors hover:text-accent"
             >
               {{ link.label }}
-              <app-icon name="chevron-down" [size]="14" />
+              <span class="material-symbols-outlined" aria-hidden="true" style="font-size: 14px">expand_more</span>
             </a>
             <ul class="invisible absolute start-0 top-full z-50 min-w-52 rounded-md border border-line bg-white py-2 opacity-0 shadow-card transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
               @for (child of link.children; track child.route) {
@@ -55,7 +55,7 @@
         aria-controls="mobile-nav"
         aria-label="القائمة"
       >
-        <app-icon [name]="menuOpen() ? 'close' : 'menu'" [size]="26" />
+        <span class="material-symbols-outlined" aria-hidden="true" style="font-size: 26px">{{ menuOpen() ? 'close' : 'menu' }}</span>
       </button>
     </div>
   </div>

@@ -6,7 +6,7 @@
       @for (p of pillars; track p.title) {
         <li class="rounded-md border-e-4 border-brand bg-white p-7 shadow-card">
           <div class="flex items-center gap-4">
-            <span class="grid h-12 w-12 place-items-center rounded-md bg-accent-soft text-accent"><app-icon [name]="p.icon" [size]="24" /></span>
+            <span class="grid h-12 w-12 place-items-center rounded-md bg-accent-soft text-accent"><span class="material-symbols-outlined" aria-hidden="true" style="font-size: 24px">{{ p.icon }}</span></span>
             <h2 class="text-xl font-bold">{{ p.title }}</h2>
           </div>
           <p class="mt-4 leading-8 text-muted">{{ p.text }}</p>
@@ -34,7 +34,7 @@
 
     <a routerLink="/about/structure" class="btn-primary mt-12">
       الهيكل التنظيمي
-      <app-icon name="arrow-left" [size]="16" />
+      <span class="material-symbols-outlined" aria-hidden="true" style="font-size: 16px">arrow_back</span>
     </a>
   </div>
 </section>

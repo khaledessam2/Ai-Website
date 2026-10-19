@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MediaService } from '../../services/media.service';
-import { ArabicDatePipe, Icon, PageHeader } from '../../shared';
+import { ArabicDatePipe, PageHeader } from '../../shared';
 
 @Component({
   selector: 'app-albums',
-  imports: [ArabicDatePipe, Icon, PageHeader],
+  imports: [ArabicDatePipe, PageHeader],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './albums.html',
 })

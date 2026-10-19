@@ -1,29 +1,3 @@
-export type IconName =
-  | 'arrow-left'
-  | 'arrow-right'
-  | 'arrow-up'
-  | 'book'
-  | 'calendar'
-  | 'chevron-down'
-  | 'chevron-left'
-  | 'chevron-right'
-  | 'clock'
-  | 'close'
-  | 'download'
-  | 'eye'
-  | 'groups'
-  | 'headset'
-  | 'mail'
-  | 'map-pin'
-  | 'menu'
-  | 'monitor'
-  | 'phone'
-  | 'plus'
-  | 'minus'
-  | 'shield'
-  | 'target'
-  | 'user';
-
 /** Internal navigation entry; `route` is an in-app path. */
 export interface NavLink {
   label: string;
@@ -37,7 +11,7 @@ export interface FooterGroup {
 }
 
 export interface ContactDetail {
-  icon: IconName;
+  icon: string;
   label: string;
   value: string;
   ltr?: boolean;
@@ -53,7 +27,7 @@ export interface SiteInfo {
 }
 
 export interface Pillar {
-  icon: IconName;
+  icon: string;
   title: string;
   text: string;
 }
@@ -66,7 +40,7 @@ export interface Objective {
 export interface Stat {
   value: number;
   label: string;
-  icon: IconName;
+  icon: string;
 }
 
 export interface Logo {

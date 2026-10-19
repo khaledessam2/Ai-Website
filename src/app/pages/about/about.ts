@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SiteService } from '../../services/site.service';
-import { Icon, PageHeader } from '../../shared';
+import { PageHeader } from '../../shared';
 
 @Component({
   selector: 'app-about',
-  imports: [Icon, PageHeader, RouterLink],
+  imports: [PageHeader, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './about.html',
 })

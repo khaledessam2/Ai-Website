@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { AUDIENCE_LABELS, AudienceFilter, MONTHS, audienceOf } from '../../models';
 import { PlanService } from '../../services/plan.service';
-import { ArabicDatePipe, Icon, PageHeader, createPager } from '../../shared';
+import { ArabicDatePipe, PageHeader, createPager } from '../../shared';
 
 @Component({
   selector: 'app-plan',
-  imports: [ArabicDatePipe, Icon, PageHeader],
+  imports: [ArabicDatePipe, PageHeader],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './plan.html',
 })

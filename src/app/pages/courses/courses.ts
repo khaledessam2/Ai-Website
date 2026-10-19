@@ -1,31 +1,27 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { AUDIENCE_LABELS, AudienceFilter } from '../../models';
 import { CourseCard } from '../../components/course-card/course-card';
 import { CoursesService } from '../../services/courses.service';
-import { Icon, PageHeader, createPager } from '../../shared';
+import { PageHeader, createPager } from '../../shared';
 
 @Component({
   selector: 'app-courses',
-  imports: [CourseCard, Icon, PageHeader],
+  imports: [CourseCard, PageHeader],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './courses.html',
 })
 export class Courses {
-  private readonly coursesService = inject(CoursesService);
+  protected readonly coursesService = inject(CoursesService);
 
-  protected readonly filters = (Object.keys(AUDIENCE_LABELS) as AudienceFilter[]).map((key) => ({
-    key,
-    label: AUDIENCE_LABELS[key],
-  }));
-  protected readonly selected = signal<AudienceFilter>('all');
+  protected readonly filters = computed(() => [{ id: 'all', name: 'الكل' }, ...this.coursesService.categories()]);
+  protected readonly selected = signal('all');
 
-  private readonly filtered = computed(() => this.coursesService.filterByAudience(this.selected()));
+  private readonly filtered = computed(() => this.coursesService.filterByCategory(this.selected()));
   protected readonly pager = createPager(this.filtered, 8);
   protected readonly total = computed(() => this.filtered().length);
   protected readonly pages = computed(() => Array.from({ length: this.pager.pageCount() }, (_, i) => i));
 
-  protected select(filter: AudienceFilter): void {
-    this.selected.set(filter);
+  protected select(id: string): void {
+    this.selected.set(id);
     this.pager.reset();
   }
 }
