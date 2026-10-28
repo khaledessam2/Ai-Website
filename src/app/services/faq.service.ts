@@ -3,7 +3,6 @@ import { Injectable, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FaqGroup } from '../models';
 
-/** Source: https://dsd.ksu.edu.sa/ar/faq */
 @Injectable({ providedIn: 'root' })
 export class FaqService {
   private readonly http = inject(HttpClient);

@@ -1,10 +1,10 @@
 {
   "/api": {
-    "target": "https://gw.dev.leanacademy.me",
+    "target":  "https://gw.qa.leanacademy.me",
     "secure": true,
     "changeOrigin": true,
     "headers": {
-      "Origin": "https://portal.dev.leanacademy.me"
+      "Origin": "https://dsd.ksu.qa.leanacademy.me"
     }
   }
 }

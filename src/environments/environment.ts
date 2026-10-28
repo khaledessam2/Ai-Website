@@ -1,4 +1,4 @@
 export const environment = {
   enviromentURL : "/api",
-  portalURl : "https://portal.dev.leanacademy.me"
+  portalURl : "https://dsd.ksu.qa.leanacademy.me/"
 };
