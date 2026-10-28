@@ -1,7 +1,7 @@
 // Vercel serverless proxy: forwards /api/* to the gateway and sets the Origin
 // header the backend uses to resolve the organization (same as proxy.conf.json).
-const TARGET = 'https://gw.dev.leanacademy.me';
-const ORIGIN = 'https://portal.dev.leanacademy.me';
+const TARGET = 'https://gw.qa.leanacademy.me';
+const ORIGIN = 'https://dsd.ksu.qa.leanacademy.me/';
 
 module.exports = async function handler(req, res) {
   const path = String(req.query.path || '');
